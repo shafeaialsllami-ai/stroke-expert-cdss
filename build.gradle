@@ -1,0 +1,16 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.shafeai.strokeexpertcdss'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId 'com.shafeai.strokeexpertcdss'
+        minSdk 23
+        targetSdk 35
+        versionCode 1
+        versionName '2.1.0'
+    }
+}

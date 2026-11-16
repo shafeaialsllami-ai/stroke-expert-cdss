@@ -1,0 +1,31 @@
+{
+  "id": "/",
+  "name": "Stroke Clinical Decision Support System",
+  "short_name": "Stroke CDSS",
+  "description": "Interactive Stroke Clinical Treatment and Pharmacotherapy Guide with patient assessment, safety screening, dosing calculators, monitoring, clinical cases, and guideline references.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#F8FAFC",
+  "theme_color": "#075985",
+  "categories": [
+    "medical",
+    "education",
+    "productivity"
+  ],
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

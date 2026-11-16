@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STROKE TREATMENT & MANAGEMENT – DETAILED CLINICAL GUIDE</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        medical: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0284c7',
+                            600: '#0369a1',
+                            700: '#035485',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        alert: {
+                            50: '#fef2f2',
+                            100: '#fee2e2',
+                            500: '#ef4444',
+                            600: '#dc2626',
+                            700: '#b91c1c',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @media print {
+            .no-print { display: none !important; }
+            body { background: white; color: black; font-size: 10pt; }
+            .print-break-before { page-break-before: always; }
+            .card-box { border: 1px solid #ccc; box-shadow: none !important; }
+        }
+        .tab-active {
+            border-bottom: 3px solid #0284c7;
+            color: #0284c7;
+            font-weight: bold;
+        }
+        .dark .tab-active {
+            border-bottom: 3px solid #38bdf8;
+            color: #38bdf8;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .dark ::-webkit-scrollbar-track {
+            background: #1e293b;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #94a3b8;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 min-h-screen font-sans transition-colors duration-200">
+
+    <!-- Top Navigation Header -->
+    <header class="sticky top-0 z-50 bg-white dark:bg-slate-800 shadow-md border-b border-slate-200 dark:border-slate-700 no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="p-2 bg-medical-600 text-white rounded-lg shadow">
+                        <i class="fa-solid fa-brain text-2xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-lg font-bold leading-tight text-slate-900 dark:text-white">STROKE EXPERT CDSS</h1>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">Detailed Clinical Treatment Guide & Pharmacotherapy Algorithm</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-center space-x-2 sm:space-x-4">
+                    <span class="hidden md:inline-block text-xs bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300 font-semibold px-2.5 py-1 rounded-full border border-emerald-300 dark:border-emerald-700">
+                        <i class="fa-solid fa-book-medical mr-1"></i> DiPiro 13th Ed & AHA/ASA Guidelines
+                    </span>
+                    <button id="themeToggle" class="p-2 text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 transition" title="Toggle Light/Dark Mode">
+                        <i class="fa-solid fa-moon text-lg dark:hidden"></i>
+                        <i class="fa-solid fa-sun text-lg hidden dark:block text-amber-400"></i>
+                    </button>
+                    <button onclick="window.print()" class="p-2 text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 transition" title="Print Protocol">
+                        <i class="fa-solid fa-print text-lg"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Navigation Tabs -->
+            <nav class="flex space-x-4 overflow-x-auto text-sm font-medium border-t border-slate-100 dark:border-slate-700/50 py-2 scrollbar-none">
+                <button onclick="switchTab('tab-ischemic')" id="btn-tab-ischemic" class="nav-tab tab-active px-3 py-1.5 whitespace-nowrap rounded-md hover:bg-slate-100 dark:hover:bg-slate-700/50">
+                    <i class="fa-solid fa-bolt mr-1.5 text-amber-500"></i> Acute Ischemic Stroke
+                </button>
+                <button onclick="switchTab('tab-hemorrhagic')" id="btn-tab-hemorrhagic" class="nav-tab text-slate-600 dark:text-slate-300 px-3 py-1.5 whitespace-nowrap rounded-md hover:bg-slate-100 dark:hover:bg-slate-700/50">
+                    <i class="fa-solid fa-droplet mr-1.5 text-rose-500"></i> Hemorrhagic Stroke (ICH/SAH)
+                </button>
+                <button onclick="switchTab('tab-algorithms')" id="btn-tab-algorithms" class="nav-tab text-slate-600 dark:text-slate-300 px-3 py-1.5 whitespace-nowrap rounded-md hover:bg-slate-100 dark:hover:bg-slate-700/50">
+                    <i class="fa-solid fa-diagram-project mr-1.5 text-indigo-500"></i> Clinical Algorithms
+                </button>
+                <button onclick="switchTab('tab-calculators')" id="btn-tab-calculators" class="nav-tab text-slate-600 dark:text-slate-300 px-3 py-1.5 whitespace-nowrap rounded-md hover:bg-slate-100 dark:hover:bg-slate-700/50">
+                    <i class="fa-solid fa-calculator mr-1.5 text-emerald-500"></i> Dosing Calculators
+                </button>
+                <button onclick="switchTab('tab-monographs')" id="btn-tab-monographs" class="nav-tab text-slate-600 dark:text-slate-300 px-3 py-1.5 whitespace-nowrap rounded-md hover:bg-slate-100 dark:hover:bg-slate-700/50">
+                    <i class="fa-solid fa-pills mr-1.5 text-cyan-500"></i> Drug Monographs
+                </button>
+                <button onclick="switchTab('tab-comparisons')" id="btn-tab-comparisons" class="nav-tab text-slate-600 dark:text-slate-300 px-3 py-1.5 whitespace-nowrap rounded-md hover:bg-slate-100 dark:hover:bg-slate-700/50">
+                    <i class="fa-solid fa-code-compare mr-1.5 text-purple-500"></i> Comparisons & CDS
+                </button>
+                <button onclick="switchTab('tab-supportive')" id="btn-tab-supportive" class="nav-tab text-slate-600 dark:text-slate-300 px-3 py-1.5 whitespace-nowrap rounded-md hover:bg-slate-100 dark:hover:bg-slate-700/50">
+                    <i class="fa-solid fa-heart-pulse mr-1.5 text-blue-500"></i> Supportive Care & Prevention
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+
+        <!-- CRITICAL RED ALERTS BAR (ALWAYS ACCESSIBLE OR DISPLAYED TOP) -->
+        <div class="mb-6 bg-alert-50 dark:bg-alert-950/40 border-l-4 border-alert-600 p-4 rounded-r-lg shadow-sm">
+            <div class="flex items-start">
+                <div class="flex-shrink-0 text-alert-600 dark:text-alert-500 mt-0.5">
+                    <i class="fa-solid fa-triangle-exclamation text-xl"></i>
+                </div>
+                <div class="ml-3 w-full">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-sm font-bold text-alert-800 dark:text-alert-300 uppercase tracking-wider">Critical Safety Alerts – High-Risk Errors</h3>
+                        <button onclick="toggleElement('safety-alerts-content')" class="text-xs text-alert-700 dark:text-alert-400 underline font-semibold">Toggle Warnings</button>
+                    </div>
+                    <div id="safety-alerts-content" class="mt-2 text-xs text-alert-800 dark:text-alert-200 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+                        <div class="bg-white/60 dark:bg-slate-800/80 p-2 rounded border border-alert-200 dark:border-alert-800">
+                            <strong class="block text-alert-700 dark:text-alert-400"><i class="fa-solid fa-ban mr-1"></i> Premature Antiplatelet Use:</strong>
+                            NEVER give aspirin, clopidogrel, or heparin within 24 hours of thrombolysis (Alteplase/Tenecteplase) unless mechanical thrombectomy requires stenting.
+                        </div>
+                        <div class="bg-white/60 dark:bg-slate-800/80 p-2 rounded border border-alert-200 dark:border-alert-800">
+                            <strong class="block text-alert-700 dark:text-alert-400"><i class="fa-solid fa-skull mr-1"></i> Hemorrhage Rule Out:</strong>
+                            NEVER administer thrombolytics without a Non-Contrast CT head scan excluding intracranial hemorrhage (ICH).
+                        </div>
+                        <div class="bg-white/60 dark:bg-slate-800/80 p-2 rounded border border-alert-200 dark:border-alert-800">
+                            <strong class="block text-alert-700 dark:text-alert-400"><i class="fa-solid fa-gauge-high mr-1"></i> BP Pre-Thrombolysis:</strong>
+                            Must lower BP to &lt;185/110 mmHg BEFORE starting Alteplase/Tenecteplase and maintain &lt;180/105 mmHg for 24h post-infusion.
+                        </div>
+                        <div class="bg-white/60 dark:bg-slate-800/80 p-2 rounded border border-alert-200 dark:border-alert-800">
+                            <strong class="block text-alert-700 dark:text-alert-400"><i class="fa-solid fa-vial mr-1"></i> Dosing Error Hazard:</strong>
+                            Alteplase max dose is strictly 90 mg (0.9 mg/kg). Tenecteplase max stroke dose is 25 mg (0.25 mg/kg bolus). Do NOT use cardiac doses!
+                        </div>
+                        <div class="bg-white/60 dark:bg-slate-800/80 p-2 rounded border border-alert-200 dark:border-alert-800">
+                            <strong class="block text-alert-700 dark:text-alert-400"><i class="fa-solid fa-clock mr-1"></i> Anticoagulant Reversal:</strong>
+                            Delay in reversing Warfarin/DOAC in active ICH directly increases hematoma expansion and 30-day mortality (46%). Administer reversal immediately.
+                        </div>
+                        <div class="bg-white/60 dark:bg-slate-800/80 p-2 rounded border border-alert-200 dark:border-alert-800">
+                            <strong class="block text-alert-700 dark:text-alert-400"><i class="fa-solid fa-circle-exclamation mr-1"></i> Symptomatic ICH Recognition:</strong>
+                            Sudden neuro decline, severe headache, acute nausea/vomiting, or surge in BP during/after IV thrombolytic = STOP infusion immediately & order stat CT.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================================================= -->
+        <!-- TAB 1: ACUTE ISCHEMIC STROKE TREATMENT -->
+        <!-- ========================================================================= -->
+        <section id="tab-ischemic" class="tab-content space-y-6">
+            <div class="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-sm border border-slate-200 dark:border-slate-700">
+                <div class="border-b border-slate-200 dark:border-slate-700 pb-4 mb-4 flex justify-between items-center">
+                    <div>
+                        <h2 class="text-xl font-bold text-slate-900 dark:text-white flex items-center">
+                            <i class="fa-solid fa-bolt text-amber-500 mr-2"></i> Acute Ischemic Stroke (AIS) Management Protocol
+                        </h2>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">Covers 87% of all stroke events. Goal: Rapid reperfusion & salvage of the ischemic penumbra.</p>
+                    </div>
+                    <span class="text-xs bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2.5 py-1 rounded">DiPiro Ch. 42 / AHA Guidelines</span>
+                </div>
+
+                <!-- Initial Stabilization -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                    <div class="p-4 bg-slate-50 dark:bg-slate-900/50 rounded-lg border border-slate-200 dark:border-slate-700">
+                        <h3 class="font-bold text-slate-800 dark:text-slate-200 text-sm mb-2 flex items-center">
+                            <i class="fa-solid fa-square-hiring mr-1.5 text-medical-500"></i> Airway & Oxygenation
+                        </h3>
+                        <ul class="text-xs text-slate-600 dark:text-slate-300 space-y-1">
+                            <li>• Maintain $SpO_2 > 94\%$ with supplemental $O_2$ if needed.</li>
+                            <li>• Intubate if GCS &lt; 8 or severe bulbar compromise.</li>
+                            <li>• Avoid hypoxia; avoid hyperoxia.</li>
+                        </ul>
+                    </div>
+                    <div class="p-4 bg-slate-50 dark:bg-slate-900/50 rounded-lg border border-slate-200 dark:border-slate-700">
+                        <h3 class="font-bold text-slate-800 dark:text-slate-200 text-sm mb-2 flex items-center">
+                            <i class="fa-solid fa-vial-circle-check mr-1.5 text-emerald-500"></i> Urgent Lab Workup
+                        </h3>
+                        <ul class="text-xs text-slate-600 dark:text-slate-300 space-y-1">
+                            <li>• <strong>STAT Blood Glucose:</strong> Correct if &lt;60 mg/dL (3.3 mmol/L) or &gt;180 mg/dL.</li>
+                            <li>• Platelet count, PT/INR, aPTT (Do not delay thrombolysis for labs unless coagulopathy suspected).</li>
+                            <li>• Troponin, Serum Creatinine, Electrolytes.</li>
+                        </ul>
+                    </div>
+                    <div class="p-4 bg-slate-50 dark:bg-slate-900/50 rounded-lg border border-slate-200 dark:border-slate-700">
+                        <h3 class="font-bold text-slate-800 dark:text-slate-200 text-sm mb-2 flex items-center">
+                            <i class="fa-solid fa-x-ray mr-1.5 text-purple-500"></i> Brain & Vascular Imaging
+                        </h3>
+                        <ul class="text-xs text-slate-600 dark:text-slate-300 space-y-1">
+                            <li>• <strong>Non-Contrast Head CT / MRI:</strong> Rule out ICH immediately.</li>
+                            <li>• <strong>CT Angiography (CTA):</strong> Evaluate Large Vessel Occlusion (LVO) in ICA / MCA-M1.</li>
+                            <li>• NIHSS score determination prior to intervention.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Thrombolytic Therapy Protocols -->
+                <div class="mb-6">
+                    <h3 class="text-md font-bold text-slate-800 dark:text-slate-100 mb-3 border-l-4 border-medical-500 pl-2">
+                        IV Thrombolytic Therapy (Reperfusion)
+                    </h3>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                        <!-- Alteplase Card -->
+                        <div class="p-4 border border-medical-200 dark:border-medical-900/50 bg-medical-50/30 dark:bg-slate-900/40 rounded-lg">
+                            <div class="flex justify-between items-start">
+                                <h4 class="font-bold text-medical-800 dark:text-medical-300">Alteplase (rt-PA) Protocol</h4>
+                                <span class="text-xs bg-medical-100 dark:bg-medical-900/60 text-medical-800 dark:text-medical-300 px-2 py-0.5 rounded font-bold">Class I, LOE A</span>
+                            </div>
+                            <div class="mt-2 text-xs space-y-1 text-slate-700 dark:text-slate-300">
+                                <p><strong>Window:</strong> &lt; 3 hours (Class I, LOE A) or 3 to 4.5 hours from Last Known Well (LKW) (Class I, LOE B-R).</p>
+                                <p><strong>Dose:</strong> <strong>0.9 mg/kg</strong> total body weight (<strong>Maximum 90 mg</strong> total).</p>
+                                <p><strong>Administration:</strong> <strong>10% as IV Bolus</strong> over 1 minute; remaining <strong>90% as IV Infusion</strong> over 60 minutes.</p>
+                                <p><strong>Preparation:</strong> Reconstitute with sterile water for injection (1 mg/mL). Do not shake.</p>
+                                <p class="text-amber-700 dark:text-amber-400 font-semibold mt-1">
+                                    <i class="fa-solid fa-triangle-exclamation"></i> Diminished benefit/avoid if NIHSS &gt; 25 or &gt;1/3 MCA territory infarct on CT in 3–4.5h window.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Tenecteplase Card -->
+                        <div class="p-4 border border-purple-200 dark:border-purple-900/50 bg-purple-50/30 dark:bg-slate-900/40 rounded-lg">
+                            <div class="flex justify-between items-start">
+                                <h4 class="font-bold text-purple-800 dark:text-purple-300">Tenecteplase (TNK) Protocol</h4>
+                                <span class="text-xs bg-purple-100 dark:bg-purple-900/60 text-purple-800 dark:text-purple-300 px-2 py-0.5 rounded font-bold">ESO 2023 / AHA IIb</span>
+                            </div>
+                            <div class="mt-2 text-xs space-y-1 text-slate-700 dark:text-slate-300">
+                                <p><strong>Window:</strong> &lt; 4.5 hours from LKW (especially ideal before Mechanical Thrombectomy).</p>
+                                <p><strong>Dose:</strong> <strong>0.25 mg/kg</strong> total body weight (<strong>Maximum 25 mg</strong> single bolus).</p>
+                                <p><strong>Administration:</strong> Single rapid IV bolus given over 5 seconds.</p>
+                                <p><strong>Guideline Note:</strong> ESO 2023 recommends TNK 0.25 mg/kg as safe/effective alternative to Alteplase. AHA 2019 noted 0.4 mg/kg alternative, but recent data (NOR-TEST 2) showed safety concerns with 0.4 mg/kg dose in high NIHSS. Stick to <strong>0.25 mg/kg</strong>.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Inclusion / Exclusion Criteria Table -->
+                <div class="mb-6">
+                    <h3 class="text-md font-bold text-slate-800 dark:text-slate-100 mb-3 border-l-4 border-amber-500 pl-2">
+                        Thrombolysis Eligibility Criteria (Table 42-4 Summary)
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="p-3 bg-emerald-50/50 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-800 rounded-lg">
+                            <h4 class="text-xs font-bold text-emerald-800 dark:text-emerald-300 uppercase mb-2">Inclusion Criteria (Must Meet All)</h4>
+                            <ul class="text-xs text-slate-700 dark:text-slate-300 space-y-1">
+                                <li><i class="fa-solid fa-check text-emerald-600 mr-1"></i> Age ≥ 18 years.</li>
+                                <li><i class="fa-solid fa-check text-emerald-600 mr-1"></i> Clinical diagnosis of ischemic stroke causing measurable neurological deficit.</li>
+                                <li><i class="fa-solid fa-check text-emerald-600 mr-1"></i> Onset of symptoms / Last Known Well established &lt; 4.5 hours prior to treatment.</li>
+                                <li><i class="fa-solid fa-check text-emerald-600 mr-1"></i> Blood Pressure safely controlled to &lt; 185/110 mmHg before infusion.</li>
+                            </ul>
+                        </div>
+                        <div class="p-3 bg-rose-50/50 dark:bg-rose-950/20 border border-rose-200 dark:border-rose-800 rounded-lg">
+                            <h4 class="text-xs font-bold text-rose-800 dark:text-rose-300 uppercase mb-2">Absolute Contraindications (Exclude if Any Present)</h4>
+                            <ul class="text-xs text-slate-700 dark:text-slate-300 space-y-1">
+                                <li><i class="fa-solid fa-xmark text-rose-600 mr-1"></i> Head CT showing acute ICH, SAH, or structural lesion.</li>
+                                <li><i class="fa-solid fa-xmark text-rose-600 mr-1"></i> History of ICH or ischemic stroke within prior 3 months.</li>
+                                <li><i class="fa-solid fa-xmark text-rose-600 mr-1"></i> Active internal bleeding or acute coagulopathy (Plt &lt; 100,000/$mm^3$, INR &gt; 1.7, aPTT &gt; 40s, PT &gt; 15s).</li>
+                                <li><i class="fa-solid fa-xmark text-rose-600 mr-1"></i> Direct Thrombin Inhibitors or DOAC use within prior 48 hours.</li>
+                                <li><i class="fa-solid fa-xmark text-rose-600 mr-1"></i> Treatment-dose LMWH received in prior 24 hours.</li>
+                                <li><i class="fa-solid fa-xmark text-rose-600 mr-1"></i> Severe head trauma in prior 3 months; GI malignancy or GI bleed in prior 21 days.</li>
+                                <li><i class="fa-solid fa-xmark text-rose-600 mr-1"></i> Infective endocarditis, aortic arch dissection, intra-axial intracranial neoplasm.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Blood Pressure Management in AIS -->
+                <div class="mb-6">
+                    <h3 class="text-md font-bold text-slate-800 dark:text-slate-100 mb-3 border-l-4 border-blue-500 pl-2">
+                        Blood Pressure Management Guidelines in AIS (Table 42-2)
+                    </h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-xs text-left text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+                            <thead class="bg-slate-100 dark:bg-slate-700/60 uppercase text-slate-800 dark:text-slate-200 font-bold">
+                                <tr>
+                                    <th class="p-2.5 border-b">Clinical Scenario</th>
+                                    <th class="p-2.5 border-b">Target Blood Pressure Goal</th>
+                                    <th class="p-2.5 border-b">First-Line IV Pharmacotherapy</th>
+                                    <th class="p-2.5 border-b">Recommendation Level</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-200 dark:divide-slate-700">
+                                <tr class="bg-white dark:bg-slate-800">
+                                    <td class="p-2.5 font-bold">Candidate for IV Thrombolysis (Pre-treatment)</td>
+                                    <td class="p-2.5 text-rose-600 dark:text-rose-400 font-bold">Lower SBP &lt; 185 mmHg and DBP &lt; 110 mmHg</td>
+                                    <td class="p-2.5" rowspan="2">
+                                        <strong>Labetalol:</strong> 10–20 mg IV push over 1–2 min; repeat x1.<br>
+                                        <strong>Nicardipine IV:</strong> 5 mg/hr, titrate by 2.5 mg/hr q5–15min (max 15 mg/hr).<br>
+                                        <strong>Clevidipine IV:</strong> 1–2 mg/hr, double q2–5min (max 21 mg/hr).
+                                    </td>
+                                    <td class="p-2.5">Class I, LOE B-NR</td>
+                                </tr>
+                                <tr class="bg-slate-50 dark:bg-slate-850">
+                                    <td class="p-2.5 font-bold">Post-Thrombolytic Management (First 24 hours)</td>
+                                    <td class="p-2.5 text-amber-600 dark:text-amber-400 font-bold">Maintain SBP &lt; 180 mmHg and DBP &lt; 105 mmHg</td>
+                                    <td class="p-2.5">Class I, LOE B-NR</td>
+                                </tr>
+                                <tr class="bg-white dark:bg-slate-800">
+                                    <td class="p-2.5 font-bold">NOT Receiving Thrombolytic or Thrombectomy</td>
+                                    <td class="p-2.5">Allow "Permissive Hypertension" up to <strong>220/120 mmHg</strong>. Treat only if BP &gt; 220/120 mmHg (lower by 15% in first 24h).</td>
+                                    <td class="p-2.5">Labetalol IV, Nicardipine IV, or Clevidipine IV.</td>
+                                    <td class="p-2.5">Class IIb, LOE C-EO</td>
+                                </tr>
+                                <tr class="bg-slate-50 dark:bg-slate-850">
+                                    <td class="p-2.5 font-bold">Undergoing Mechanical Thrombectomy (No Fibrinolytic)</td>
+                                    <td class="p-2.5">Reasonable to maintain BP ≤ 185/110 mmHg prior to procedure.</td>
+                                    <td class="p-2.5">Nicardipine, Clevidipine, Labetalol infusions.</td>
+                                    <td class="p-2.5">Class IIb, LOE C-EO</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Mechanical Thrombectomy & Post-Reperfusion Complications -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="p-4 bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700 rounded-lg">
+                        <h3 class="font-bold text-slate-800 dark:text-slate-100 text-sm mb-2 flex items-center">
+                            <i class="fa-solid fa-wire-gastro mr-2 text-indigo-500"></i> Mechanical Thrombectomy (EVT) Indications
+                        </h3>
+                        <ul class="text-xs text-slate-700 dark:text-slate-300 space-y-1.5">
+                            <li>• <strong>Strong Recommendation (&lt;6 hours):</strong> Anterior circulation Large Vessel Occlusion (ICA or MCA segment M1) within 6h of onset (Class I, LOE A).</li>
+                            <li>• <strong>Extended Window (6–24 hours):</strong> Select patients with ICA/MCA-M1 occlusions with salvageable penumbra tissue on perfusion imaging (DAWN / DEFUSE-3 criteria).</li>
+                            <li>• <strong>Thrombolysis Bridge:</strong> EVT should be performed in addition to IV thrombolysis if eligible; do not delay EVT to observe response to thrombolysis.</li>
+                        </ul>
+                    </div>
+
+                    <div class="p-4 bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700 rounded-lg">
+                        <h3 class="font-bold text-slate-800 dark:text-slate-100 text-sm mb-2 flex items-center">
+                            <i class="fa-solid fa-hand-holding-medical mr-2 text-rose-500"></i> Managing Thrombolysis Complications
+                        </h3>
+                        <div class="text-xs text-slate-700 dark:text-slate-300 space-y-2">
+                            <div>
+                                <strong class="text-rose-600 dark:text-rose-400">1. Symptomatic Intracranial Hemorrhage (sICH):</strong>
+                                <p>STOP tPA/TNK immediately. STAT Non-Contrast Head CT. Labs: fibrinogen, PT/INR, platelets. Administer <strong>Cryoprecipitate 10 units IV</strong> (target fibrinogen &gt;150 mg/dL) or Tranexamic Acid (TXA) 1000 mg IV over 10 min.</p>
+                            </div>
+                            <div>
+                                <strong class="text-amber-600 dark:text-amber-400">2. Orolingual Angioedema (1-5% risk, higher with ACEi):</strong>
+                                <p>STOP tPA/TNK infusion. Maintain airway. Administer <strong>Methylprednisolone 125 mg IV</strong> + <strong>Diphenhydramine 50 mg IV</strong> + <strong>Famotidine 20 mg IV</strong>. If expanding: Epinephrine 0.3 mg IM / nebulized.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- TAB 2: HEMORRHAGIC STROKE TREATMENT -->
+        <!-- ========================================================================= -->
+        <section id="tab-hemorrhagic" class="tab-content hidden space-y-6">
+            <div class="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-sm border border-slate-200 dark:border-slate-700">
+                <div class="border-b border-slate-200 dark:border-slate-700 pb-4 mb-4 flex justify-between items-center">
+                    <div>
+                        <h2 class="text-xl font-bold text-slate-900 dark:text-white flex items-center">
+                            <i class="fa-solid fa-droplet text-rose-500 mr-2"></i> Hemorrhagic Stroke Management Protocol
+                        </h2>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">Includes Intracerebral Hemorrhage (ICH) & Subarachnoid Hemorrhage (SAH). High 30-day mortality (~46%).</p>
+                    </div>
+                    <span class="text-xs bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2.5 py-1 rounded">AHA ICH 2022 / SAH 2023 Guidelines</span>
+                </div>
+
+                <!-- ICH Management -->
+                <div class="mb-6">
+                    <h3 class="text-md font-bold text-slate-800 dark:text-slate-100 mb-3 border-l-4 border-rose-500 pl-2">
+                        A. Intracerebral Hemorrhage (ICH) Critical Care
+                    </h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                        <div class="p-4 bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700 rounded-lg">
+                            <h4 class="font-bold text-slate-800 dark:text-slate-200 text-xs uppercase mb-2">Blood Pressure Lowering in ICH</h4>
+                            <ul class="text-xs text-slate-700 dark:text-slate-300 space-y-1.5">
+                                <li>• <strong>Presentation SBP 150–220 mmHg:</strong> Acute lowering to target SBP of <strong>140 mmHg</strong> (range 130–150 mmHg) is safe and improves functional outcomes (Class I, LOE A).</li>
+                                <li>• <strong>Presentation SBP &gt; 220 mmHg:</strong> Aggressive IV infusion reduction (Nicardipine, Clevidipine, Labetalol) is reasonable (Class IIb, LOE C).</li>
+                                <li>• <span class="text-rose-600 dark:text-rose-400 font-bold">WARNING:</span> Acute lowering to SBP &lt; 130 mmHg is potentially harmful and MUST BE AVOIDED. Maintain smooth continuous control without sharp spikes/variability.</li>
+                            </ul>
+                        </div>
+
+                        <div class="p-4 bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700 rounded-lg">
+                            <h4 class="font-bold text-slate-800 dark:text-slate-200 text-xs uppercase mb-2">Intracranial Pressure (ICP) & Edema Management</h4>
+                            <ul class="text-xs text-slate-700 dark:text-slate-300 space-y-1.5">
+                                <li>• Elevate head of bed to 30° and maintain head in midline position.</li>
+                                <li>• <strong>Osmotic Therapy for Elevated ICP/Edema:</strong>
+                                    <br>- <strong>Hypertonic Saline (3% or 23.4%):</strong> 3% NaCl continuous infusion (target serum $Na^+ 145-155$ mEq/L) or 23.4% NaCl bolus 30 mL for acute herniation.
+                                    <br>- <strong>Mannitol 20%:</strong> $0.5 - 1 \text{ g/kg}$ IV bolus over 20 min q6h (Target serum osmolality &lt; 320 mOsm/kg).
+                                </li>
+                                <li>• <strong>Seizures:</strong> Treat clinical seizures. <span class="text-rose-600 dark:text-rose-400 font-bold">Prophylactic antiseizure medications are NOT recommended (Class III, LOE B).</span></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Anticoagulant Reversal Protocol Table -->
+                    <h4 class="font-bold text-slate-800 dark:text-slate-200 text-xs uppercase mb-2">Anticoagulation Reversal Protocols for ICH (Table 42-8)</h4>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-xs text-left text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+                            <thead class="bg-slate-100 dark:bg-slate-700/60 uppercase text-slate-800 dark:text-slate-200 font-bold">
+                                <tr>
+                                    <th class="p-2 border-b">Offending Drug</th>
+                                    <th class="p-2 border-b">First-Line Reversal Strategy</th>
+                                    <th class="p-2 border-b">Dosing & Administration Details</th>
+                                    <th class="p-2 border-b">Alternative Treatment</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-200 dark:divide-slate-700">
+                                <tr>
+                                    <td class="p-2 font-bold">Warfarin (VKA)</td>
+                                    <td class="p-2 text-emerald-700 dark:text-emerald-400 font-bold">Vitamin K1 + 4-Factor PCC (Kcentra)</td>
+                                    <td class="p-2">
+                                        • <strong>Vitamin K1:</strong> 10 mg IV slow push x1.<br>
+                                        • <strong>4PCC Dose (by INR):</strong>
+                                        <br> - INR 2–&lt;4: 25 units/kg (max 2500 units)
+                                        <br> - INR 4–6: 35 units/kg (max 3500 units)
+                                        <br> - INR &gt; 6: 50 units/kg (max 5000 units)
+                                    </td>
+                                    <td class="p-2">Fresh Frozen Plasma (FFP) 10–15 mL/kg (less preferred due to fluid volume & delay).</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 font-bold">Dabigatran</td>
+                                    <td class="p-2 text-emerald-700 dark:text-emerald-400 font-bold">Idarucizumab (Praxbind)</td>
+                                    <td class="p-2"><strong>5 g IV total</strong> (given as two consecutive 2.5 g IV boluses/infusions).</td>
+                                    <td class="p-2">4PCC 50 units/kg IV or Hemodialysis.</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 font-bold">Rivaroxaban / Apixaban</td>
+                                    <td class="p-2 text-emerald-700 dark:text-emerald-400 font-bold">Andexanet Alfa (Andexxa)</td>
+                                    <td class="p-2">
+                                        • <strong>Low Dose:</strong> 400 mg IV bolus at 30 mg/min, then 4 mg/min infusion x 120 min.<br>
+                                        • <strong>High Dose</strong> (if last dose &lt;8h ago or Rivaroxaban &gt;10mg / Apixaban &gt;5mg): 800 mg IV bolus at 30 mg/min, then 8 mg/min x 120 min.
+                                    </td>
+                                    <td class="p-2">4PCC 50 units/kg IV bolus.</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 font-bold">Edoxaban</td>
+                                    <td class="p-2 font-bold text-amber-600">4PCC (Off-label)</td>
+                                    <td class="p-2"><strong>4PCC 50 units/kg IV x 1</strong> (Andexanet not formally studied for Edoxaban in trials).</td>
+                                    <td class="p-2">aPCC (FEIBA) 50 units/kg.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Subarachnoid Hemorrhage (SAH) -->
+                <div>
+                    <h3 class="text-md font-bold text-slate-800 dark:text-slate-100 mb-3 border-l-4 border-purple-500 pl-2">
+                        B. Aneurysmal Subarachnoid Hemorrhage (SAH) Protocol
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="p-3 bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700 rounded-lg">
+                            <h4 class="font-bold text-slate-800 dark:text-slate-200 text-xs mb-1">1. Aneurysm Securing & BP Control</h4>
+                            <p class="text-xs text-slate-600 dark:text-slate-300">
+                                • Target <strong>SBP &lt; 160 mmHg</strong> prior to surgical clipping or endovascular coiling to prevent rebleeding.
+                                <br>• Early repair within 24–72h is paramount.
+                            </p>
+                        </div>
+                        <div class="p-3 bg-purple-50/50 dark:bg-purple-950/20 border border-purple-200 dark:border-purple-800 rounded-lg">
+                            <h4 class="font-bold text-purple-900 dark:text-purple-300 text-xs mb-1">2. Nimodipine Vasospasm Prophylaxis</h4>
+                            <p class="text-xs text-slate-700 dark:text-slate-300">
+                                • <strong>Nimodipine 60 mg orally q4h</strong> for 21 consecutive days starting within 96 hours of SAH onset.
+                                <br>• If BP low: 30 mg orally q2h.
+                                <br><span class="text-rose-600 font-bold">BLACK BOX:</span> Oral/NG tube administration ONLY. NEVER administer intravenously (causes fatal arrest).
+                            </p>
+                        </div>
+                        <div class="p-3 bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700 rounded-lg">
+                            <h4 class="font-bold text-slate-800 dark:text-slate-200 text-xs mb-1">3. Delayed Cerebral Ischemia (DCI)</h4>
+                            <p class="text-xs text-slate-600 dark:text-slate-300">
+                                • Maintain euvolemia (0.9% NaCl continuous).
+                                <br>• Avoid prophylactic hypervolemia.
+                                <br>• If symptomatic DCI occurs: Induced hypertension with IV vasopressors (Norepinephrine/Phenylephrine) to maintain perfusion.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- TAB 3: CLINICAL TREATMENT ALGORITHMS -->
+        <!-- ========================================================================= -->
+        <section id="tab-algorithms" class="tab-content hidden space-y-6">
+            <div class="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-sm border border-slate-200 dark:border-slate-700">
+                <div class="border-b border-slate-200 dark:border-slate-700 pb-4 mb-4">
+                    <h2 class="text-xl font-bold text-slate-900 dark:text-white flex items-center">
+                        <i class="fa-solid fa-diagram-project text-indigo-500 mr-2"></i> Step-by-Step Interactive Clinical Decision Algorithms
+                    </h2>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">Click steps to expand procedural details, doses, stopping criteria, and next steps.</p>
+                </div>
+
+                <!-- Ischemic Stroke Flowchart -->
+                <div class="mb-8">
+                    <h3 class="font-bold text-slate-800 dark:text-slate-100 text-sm mb-3 text-indigo-600 dark:text-indigo-400 uppercase tracking-wide">
+                        Algorithm 1: Acute Ischemic Stroke Management Pathway
+                    </h3>
+                    <div class="space-y-2">
+                        <!-- Step 1 -->
+                        <div class="border border-slate-200 dark:border-slate-700 rounded-lg bg-slate-50 dark:bg-slate-900/40 p-3">
+                            <div class="flex justify-between items-center cursor-pointer" onclick="toggleElement('ais-step1')">
+                                <div class="flex items-center space-x-2">
+                                    <span class="w-6 h-6 rounded-full bg-indigo-600 text-white text-xs font-bold flex items-center justify-center">1</span>
+                                    <h4 class="text-xs font-bold text-slate-800 dark:text-slate-200">Patient Arrival & Triage (&lt; 10 Minutes)</h4>
+                                </div>
+                                <i class="fa-solid fa-chevron-down text-slate-400 text-xs"></i>
+                            </div>
+                            <div id="ais-step1" class="mt-2 text-xs text-slate-600 dark:text-slate-300 space-y-1 pl-8">
+                                <p><strong>Action:</strong> Assess ABCs, check Point-of-Care Blood Glucose immediately, record LKW (Last Known Well) time, obtain baseline NIHSS.</p>
+                                <p><strong>Target:</strong> Dextrose if blood glucose &lt; 60 mg/dL. If CT clear and LKW &lt; 4.5h, proceed to Step 2.</p>
+                            </div>
+                        </div>
+
+                        <div class="text-center text-slate-400"><i class="fa-solid fa-arrow-down text-xs"></i></div>
+
+                        <!-- Step 2 -->
+                        <div class="border border-slate-200 dark:border-slate-700 rounded-lg bg-slate-50 dark:bg-slate-900/40 p-3">
+                            <div class="flex justify-between items-center cursor-pointer" onclick="toggleElement('ais-step2')">
+                                <div class="flex items-center space-x-2">
+                                    <span class="w-6 h-6 rounded-full bg-indigo-600 text-white text-xs font-bold flex items-center justify-center">2</span>
+                                    <h4 class="text-xs font-bold text-slate-800 dark:text-slate-200">Urgent Imaging & Exclusion of ICH (&lt; 20 Minutes)</h4>
+                                </div>
+                                <i class="fa-solid fa-chevron-down text-slate-400 text-xs"></i>
+                            </div>
+                            <div id="ais-step2" class="mt-2 text-xs text-slate-600 dark:text-slate-300 space-y-1 pl-8">
+                                <p><strong>Action:</strong> STAT Non-contrast Head CT + CTA (Head and Neck).</p>
+                                <p><strong>Decision Point:</strong>
+                                    <br>• Hemorrhage seen? → Transfer to Hemorrhagic Stroke Algorithm.
+                                    <br>• No hemorrhage & LKW &lt; 4.5 hours? → Evaluate BP and Thrombolytic Eligibility (Step 3).
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="text-center text-slate-400"><i class="fa-solid fa-arrow-down text-xs"></i></div>
+
+                        <!-- Step 3 -->
+                        <div class="border border-slate-200 dark:border-slate-700 rounded-lg bg-slate-50 dark:bg-slate-900/40 p-3">
+                            <div class="flex justify-between items-center cursor-pointer" onclick="toggleElement('ais-step3')">
+                                <div class="flex items-center space-x-2">
+                                    <span class="w-6 h-6 rounded-full bg-indigo-600 text-white text-xs font-bold flex items-center justify-center">3</span>
+                                    <h4 class="text-xs font-bold text-slate-800 dark:text-slate-200">BP Control & Thrombolytic Administration (&lt; 45 Minutes Door-to-Needle)</h4>
+                                </div>
+                                <i class="fa-solid fa-chevron-down text-slate-400 text-xs"></i>
+                            </div>
+                            <div id="ais-step3" class="mt-2 text-xs text-slate-600 dark:text-slate-300 space-y-1 pl-8">
+                                <p><strong>Action:</strong> If BP &gt; 185/110 mmHg, give Labetalol 10-20 mg IV or start Nicardipine/Clevidipine infusion. Once BP &lt; 185/110 mmHg:</p>
+                                <p><strong>Dose:</strong> <strong>Alteplase 0.9 mg/kg</strong> (10% bolus, 90% over 1 hour) OR <strong>Tenecteplase 0.25 mg/kg</strong> single IV bolus.</p>
+                                <p><strong>Next Step:</strong> Check CTA for Large Vessel Occlusion (Step 4).</p>
+                            </div>
+                        </div>
+
+                        <div class="text-center text-slate-400"><i class="fa-solid fa-arrow-down text-xs"></i></div>
+
+                        <!-- Step 4 -->
+                        <div class="border border-slate-200 dark:border-slate-700 rounded-lg bg-slate-50 dark:bg-slate-900/40 p-3">
+                            <div class="flex justify-between items-center cursor-pointer" onclick="toggleElement('ais-step4')">
+                                <div class="flex items-center space-x-2">
+                                    <span class="w-6 h-6 rounded-full bg-indigo-600 text-white text-xs font-bold flex items-center justify-center">4</span>
+                                    <h4 class="text-xs font-bold text-slate-800 dark:text-slate-200">LVO Assessment & Endovascular Thrombectomy (EVT)</h4>
+                                </div>
+                                <i class="fa-solid fa-chevron-down text-slate-400 text-xs"></i>
+                            </div>
+                            <div id="ais-step4" class="mt-2 text-xs text-slate-600 dark:text-slate-300 space-y-1 pl-8">
+                                <p><strong>Eligibility:</strong> LKW within 0–6 hours (or 6–24h with perfusion mismatch) AND CTA shows ICA or MCA-M1 occlusion.</p>
+                                <p><strong>Action:</strong> Transfer immediately to Angio Suite for Mechanical Thrombectomy. Do not withhold tPA/TNK.</p>
+                            </div>
+                        </div>
+
+                        <div class="text-center text-slate-400"><i class="fa-solid fa-arrow-down text-xs"></i></div>
+
+                        <!-- Step 5 -->
+                        <div class="border border-slate-200 dark:border-slate-700 rounded-lg bg-slate-50 dark:bg-slate-900/40 p-3">
+                            <div class="flex justify-between items-center cursor-pointer" onclick="toggleElement('ais-step5')">
+                                <div class="flex items-center space-x-2">
+                                    <span class="w-6 h-6 rounded-full bg-indigo-600 text-white text-xs font-bold flex items-center justify-center">5</span>
+                                    <h4 class="text-xs font-bold text-slate-800 dark:text-slate-200">Post-Reperfusion Care & Antiplatelet Timing</h4>
+                                </div>
+                                <i class="fa-solid fa-chevron-down text-slate-400 text-xs"></i>
+                            </div>
+                            <div id="ais-step5" class="mt-2 text-xs text-slate-600 dark:text-slate-300 space-y-1 pl-8">
+                                <p>• Maintain SBP &lt; 180/105 mmHg for 24h. Neuro checks q15m x2h, q30m x6h, q1h x16h.</p>
+                                <p>• <strong>Antiplatelet Initiation:</strong> Start Aspirin 160–325 mg daily <strong>EXACTLY 24 HOURS</strong> post-thrombolytic after follow-up CT scan rules out hemorrhagic transformation.</p>
+                                <p>• If non-thrombolyzed minor stroke (NIHSS ≤3) or high-risk TIA: Start DAPT (Aspirin + Clopidogrel) within 24h for 21 days.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ICH Algorithm Flowchart -->
+                <div>
+                    <h3 class="font-bold text-slate-800 dark:text-slate-100 text-sm mb-3 text-rose-600 dark:text-rose-400 uppercase tracking-wide">
+                        Algorithm 2: Spontaneous Intracerebral Hemorrhage (ICH) Management
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-2 text-xs">
+                        <div class="p-3 bg-rose-50 dark:bg-slate-900/60 border border-rose-200 dark:border-rose-900 rounded-lg">
+                            <strong class="block text-rose-700 dark:text-rose-400 mb-1">Step 1: Rapid Diagnosis</strong>
+                            Non-Contrast CT Head. Assess baseline ICH score, hematoma volume, intraventricular extension.
+                        </div>
+                        <div class="p-3 bg-rose-50 dark:bg-slate-900/60 border border-rose-200 dark:border-rose-900 rounded-lg">
+                            <strong class="block text-rose-700 dark:text-rose-400 mb-1">Step 2: Immediate Reversal</strong>
+                            If on Warfarin, DOAC, or Heparin: Administer Kcentra 4PCC, Idarucizumab, or Andexanet Alfa STAT.
+                        </div>
+                        <div class="p-3 bg-rose-50 dark:bg-slate-900/60 border border-rose-200 dark:border-rose-900 rounded-lg">
+                            <strong class="block text-rose-700 dark:text-rose-400 mb-1">Step 3: Blood Pressure Goal</strong>
+                            If SBP 150-220: Titrate Nicardipine / Clevidipine IV to maintain target SBP 140 mmHg (range 130-150).
+                        </div>
+                        <div class="p-3 bg-rose-50 dark:bg-slate-900/60 border border-rose-200 dark:border-rose-900 rounded-lg">
+                            <strong class="block text-rose-700 dark:text-rose-400 mb-1">Step 4: ICP & Neurosurgery</strong>
+                            Consult Neurosurgery for cerebellar hemorrhage &gt;3 cm or hydrocephalus (EVD placement). Osmotic therapy if herniating.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- TAB 4: INTERACTIVE DOSING CALCULATORS -->
+        <!-- ========================================================================= -->
+        <section id="tab-calculators" class="tab-content hidden space-y-6">
+            <div class="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-sm border border-slate-200 dark:border-slate-700">
+                <div class="border-b border-slate-200 dark:border-slate-700 pb-4 mb-4">
+                    <h2 class="text-xl font-bold text-slate-900 dark:text-white flex items-center">
+                        <i class="fa-solid fa-calculator text-emerald-500 mr-2"></i> Interactive Clinical Dosing Calculators
+                    </h2>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">Perform verified weight-based and clinical parameter calculations. Warnings embedded to prevent overdosage.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+                    <!-- Alteplase Calculator -->
+                    <div class="p-4 border border-slate-200 dark:border-slate-700 rounded-xl bg-slate-50 dark:bg-slate-900/50">
+                        <h3 class="font-bold text-slate-800 dark:text-slate-100 text-sm mb-3 flex items-center text-medical-600 dark:text-medical-400">
+                            <i class="fa-solid fa-syringe mr-2"></i> Alteplase (rt-PA) Stroke Dosing Calculator
+                        </h3>
+                        <div class="space-y-3 text-xs">
+                            <div>
+                                <label class="block font-semibold mb-1">Patient Weight (kg):</label>
+                                <input type="number" id="alt-weight" placeholder="e.g. 75" oninput="calcAlteplase()" class="w-full p-2 border border-slate-300 dark:border-slate-600 rounded bg-white dark:bg-slate-800">
+                            </div>
+                            <div id="alt-results" class="p-3 bg-white dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700 space-y-1">
+                                <p><strong>Total Dose (0.9 mg/kg):</strong> <span id="alt-total" class="text-emerald-600 dark:text-emerald-400 font-bold">0 mg</span></p>
+                                <p><strong>IV Bolus (10% over 1 min):</strong> <span id="alt-bolus" class="font-bold">0 mg</span> (<span id="alt-bolus-vol">0 mL</span>)</p>
+                                <p><strong>IV Infusion (90% over 60 min):</strong> <span id="alt-infusion" class="font-bold">0 mg</span> (<span id="alt-infusion-rate">0 mL/hr</span>)</p>
+                                <p class="text-slate-400 text-[11px]">Formula: 0.9 mg/kg (Max Cap: 90 mg). Reconstituted concentration: 1 mg/mL.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tenecteplase Calculator -->
+                    <div class="p-4 border border-slate-200 dark:border-slate-700 rounded-xl bg-slate-50 dark:bg-slate-900/50">
+                        <h3 class="font-bold text-slate-800 dark:text-slate-100 text-sm mb-3 flex items-center text-purple-600 dark:text-purple-400">
+                            <i class="fa-solid fa-vial mr-2"></i> Tenecteplase (TNK) Stroke Calculator
+                        </h3>
+                        <div class="space-y-3 text-xs">
+                            <div>
+                                <label class="block font-semibold mb-1">Patient Weight (kg):</label>
+                                <input type="number" id="tnk-weight" placeholder="e.g. 80" oninput="calcTenecteplase()" class="w-full p-2 border border-slate-300 dark:border-slate-600 rounded bg-white dark:bg-slate-800">
+                            </div>
+                            <div id="tnk-results" class="p-3 bg-white dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700 space-y-1">
+                                <p><strong>Single IV Bolus Dose (0.25 mg/kg):</strong> <span id="tnk-total" class="text-purple-600 dark:text-purple-400 font-bold">0 mg</span></p>
+                                <p><strong>Volume to Inject (5 mg/mL conc):</strong> <span id="tnk-vol" class="font-bold">0 mL</span> over 5 seconds.</p>
+                                <p class="text-slate-400 text-[11px]">Formula: 0.25 mg/kg (Strict Max Cap: 25 mg). Single bolus.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kcentra 4PCC Warfarin Reversal Calculator -->
+                    <div class="p-4 border border-slate-200 dark:border-slate-700 rounded-xl bg-slate-50 dark:bg-slate-900/50">
+                        <h3 class="font-bold text-slate-800 dark:text-slate-100 text-sm mb-3 flex items-center text-rose-600 dark:text-rose-400">
+                            <i class="fa-solid fa-capsules mr-2"></i> 4-Factor PCC (Warfarin Reversal) Calculator
+                        </h3>
+                        <div class="grid grid-cols-2 gap-2 text-xs mb-3">
+                            <div>
+                                <label class="block font-semibold mb-1">Weight (kg):</label>
+                                <input type="number" id="pcc-weight" placeholder="e.g. 70" oninput="calcPCC()" class="w-full p-2 border border-slate-300 dark:border-slate-600 rounded bg-white dark:bg-slate-800">
+                            </div>
+                            <div>
+                                <label class="block font-semibold mb-1">Baseline INR:</label>
+                                <select id="pcc-inr" onchange="calcPCC()" class="w-full p-2 border border-slate-300 dark:border-slate-600 rounded bg-white dark:bg-slate-800">
+                                    <option value="25">INR 2.0 – 3.9 (25 units/kg)</option>
+                                    <option value="35">INR 4.0 – 6.0 (35 units/kg)</option>
+                                    <option value="50">INR &gt; 6.0 (50 units/kg)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="p-3 bg-white dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700 text-xs space-y-1">
+                            <p><strong>Calculated 4PCC Dose:</strong> <span id="pcc-dose" class="text-rose-600 dark:text-rose-400 font-bold">0 Factor IX Units</span></p>
+                            <p><strong>Capped Maximum:</strong> <span id="pcc-cap" class="text-slate-500">2500 units max for INR 2-4, 3500 max for INR 4-6, 5000 max for INR &gt;6</span></p>
+                            <p class="text-emerald-600 dark:text-emerald-400 font-semibold">• Co-administer Vitamin K1 10 mg IV slow push x1.</p>
+                        </div>
+                    </div>
+
+                    <!-- Antihypertensive Continuous Infusion Rates -->
+                    <div class="p-4 border border-slate-200 dark:border-slate-700 rounded-xl bg-slate-50 dark:bg-slate-900/50">
+                        <h3 class="font-bold text-slate-800 dark:text-slate-100 text-sm mb-3 flex items-center text-blue-600 dark:text-blue-400">
+                            <i class="fa-solid fa-heart-pulse mr-2"></i> IV Antihypertensive Titration Reference
+                        </h3>
+                        <div class="text-xs space-y-2">
+                            <div class="p-2 bg-white dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700">
+                                <strong>Nicardipine Infusion:</strong> Start 5 mg/hr IV. Titrate by 2.5 mg/hr every 5–15 min. Max: 15 mg/hr. Once goal BP reached, reduce to 3 mg/hr maintenance.
+                            </div>
+                            <div class="p-2 bg-white dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700">
+                                <strong>Clevidipine Infusion:</strong> Start 1–2 mg/hr IV. Double dose q2–5 min until target. Max: 21 mg/hr (max 500 mL/24h due to lipid load).
+                            </div>
+                            <div class="p-2 bg-white dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700">
+                                <strong>Labetalol Bolus/Infusion:</strong> 10–20 mg IV over 1–2 min; may repeat x1 or start continuous infusion 2–8 mg/min. Avoid in severe asthma or bradycardia.
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- TAB 5: DRUG MONOGRAPHS -->
+        <!-- ========================================================================= -->
+        <section id="tab-monographs" class="tab-content hidden space-y-6">
+            <div class="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-sm border border-slate-200 dark:border-slate-700">
+                <div class="border-b border-slate-200 dark:border-slate-700 pb-4 mb-4 flex justify-between items-center">
+                    <div>
+                        <h2 class="text-xl font-bold text-slate-900 dark:text-white flex items-center">
+                            <i class="fa-solid fa-pills text-cyan-500 mr-2"></i> Comprehensive Pharmacotherapy Monographs
+                        </h2>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">Detailed drug monographs with practical administration, max doses, monitoring, and renal adjustments.</p>
+                    </div>
+                </div>
+
+                <!-- Drug Selector Accordion -->
+                <div class="space-y-3 text-xs">
+
+                    <!-- Alteplase Monograph -->
+                    <div class="border border-slate-200 dark:border-slate-700 rounded-lg overflow-hidden">
+                        <button onclick="toggleElement('mono-alteplase')" class="w-full p-3 bg-slate-100 dark:bg-slate-700/50 text-left font-bold text-slate-800 dark:text-slate-200 flex justify-between items-center">
+                            <span><i class="fa-solid fa-prescription-bottle-medical mr-2 text-medical-500"></i> Alteplase (rt-PA) – Thrombolytic Agent</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <div id="mono-alteplase" class="p-4 bg-white dark:bg-slate-800 space-y-2 text-slate-700 dark:text-slate-300">
+                            <p><strong>Indication:</strong> Acute Ischemic Stroke within 4.5 hours of symptom onset.</p>
+                            <p><strong>Mechanism of Action:</strong> Recombinant tissue plasminogen activator. Binds to fibrin in a thrombus and converts trapped plasminogen to plasmin, causing local fibrinolysis.</p>
+                            <p><strong>Recommended Dose:</strong> 0.9 mg/kg IV (10% bolus over 1 min, remaining 90% over 60 min). <strong>Max Dose: 90 mg total.</strong></p>
+                            <p><strong>Preparation & Admin:</strong> Reconstitute 100 mg vial with 100 mL sterile water (1 mg/mL). Flush line with 0.9% NaCl post-infusion to ensure full dose delivery.</p>
+                            <p><strong>Contraindications:</strong> Active ICH, head trauma/stroke in prior 3 months, INR &gt; 1.7, Plt &lt; 100,000, DOAC use &lt;48h.</p>
+                            <p><strong>Monitoring:</strong> BP and neuro status q15m during infusion and for 2 hours post; then q30m for 6h; q1h for 16h.</p>
+                            <p><strong>When to Start/Avoid/Stop:</strong> Start ASAP &lt;4.5h. STOP immediately if patient develops severe headache, acute hypertension, nausea, vomiting, or neurological decline.</p>
+                        </div>
+                    </div>
+
+                    <!-- Aspirin Monograph -->
+                    <div class="border border-slate-200 dark:border-slate-700 rounded-lg overflow-hidden">
+                        <button onclick="toggleElement('mono-aspirin')" class="w-full p-3 bg-slate-100 dark:bg-slate-700/50 text-left font-bold text-slate-800 dark:text-slate-200 flex justify-between items-center">
+                            <span><i class="fa-solid fa-pills mr-2 text-amber-500"></i> Aspirin – Antiplatelet Agent</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <div id="mono-aspirin" class="p-4 bg-white dark:bg-slate-800 space-y-2 text-slate-700 dark:text-slate-300">
+                            <p><strong>Indication:</strong> Acute phase AIS (&lt;24–48h) and secondary noncardioembolic stroke prevention.</p>
+                            <p><strong>Mechanism:</strong> Irreversibly inhibits cyclooxygenase-1 (COX-1), blocking thromboxane A2 synthesis in platelets.</p>
+                            <p><strong>Dose:</strong> Acute: 160–325 mg orally once (chewed for fast onset). Maintenance: 81 mg daily.</p>
+                            <p><strong>Timing Rule:</strong> <span class="text-rose-600 font-bold">Delay for EXACTLY 24 hours if IV thrombolysis was administered.</span></p>
+                            <p><strong>Adverse Effects:</strong> Dyspepsia, GI bleeding, hypersensitivity, tinnitus.</p>
+                        </div>
+                    </div>
+
+                    <!-- Clopidogrel Monograph -->
+                    <div class="border border-slate-200 dark:border-slate-700 rounded-lg overflow-hidden">
+                        <button onclick="toggleElement('mono-clopidogrel')" class="w-full p-3 bg-slate-100 dark:bg-slate-700/50 text-left font-bold text-slate-800 dark:text-slate-200 flex justify-between items-center">
+                            <span><i class="fa-solid fa-capsules mr-2 text-indigo-500"></i> Clopidogrel (Plavix) – P2Y12 Inhibitor</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <div id="mono-clopidogrel" class="p-4 bg-white dark:bg-slate-800 space-y-2 text-slate-700 dark:text-slate-300">
+                            <p><strong>Indication:</strong> Secondary prevention of noncardioembolic stroke; component of DAPT in minor stroke (NIHSS ≤3) or high-risk TIA.</p>
+                            <p><strong>Mechanism:</strong> Irreversibly blocks $P2Y_{12}$ ADP receptors on platelets. Prodrug requiring CYP2C19 hepatic activation.</p>
+                            <p><strong>Dose:</strong> Loading dose 300–600 mg once; maintenance 75 mg orally daily.</p>
+                            <p><strong>Pharmacogenomics:</strong> CYP2C19 poor metabolizers (e.g. 14% of Asian population) have reduced antiplatelet activity. Consider Ticagrelor alternative.</p>
+                        </div>
+                    </div>
+
+                    <!-- DOACs Dosing & Renal Adjustments Monograph (Table 42-7) -->
+                    <div class="border border-slate-200 dark:border-slate-700 rounded-lg overflow-hidden">
+                        <button onclick="toggleElement('mono-doacs')" class="w-full p-3 bg-slate-100 dark:bg-slate-700/50 text-left font-bold text-slate-800 dark:text-slate-200 flex justify-between items-center">
+                            <span><i class="fa-solid fa-tablets mr-2 text-emerald-500"></i> Direct-Acting Oral Anticoagulants (DOACs) – Cardioembolic Stroke Prevention</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <div id="mono-doacs" class="p-4 bg-white dark:bg-slate-800 space-y-2 text-slate-700 dark:text-slate-300">
+                            <p><strong>Preferred over Warfarin</strong> for non-valvular Atrial Fibrillation (Class I, LOE A).</p>
+                            <div class="overflow-x-auto mt-2">
+                                <table class="w-full text-xs text-left border border-slate-200 dark:border-slate-700">
+                                    <thead class="bg-slate-100 dark:bg-slate-700">
+                                        <tr>
+                                            <th class="p-1.5 border-b">Drug</th>
+                                            <th class="p-1.5 border-b">Standard Dose</th>
+                                            <th class="p-1.5 border-b">Renal / Patient Dose Adjustments (Table 42-7)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="p-1.5 border-b font-bold">Apixaban (Eliquis)</td>
+                                            <td class="p-1.5 border-b">5 mg BID</td>
+                                            <td class="p-1.5 border-b">2.5 mg BID if ≥2 of: Age ≥80, Weight ≤60 kg, Serum Cr ≥1.5 mg/dL. Preferred in ESRD/HD.</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-1.5 border-b font-bold">Dabigatran (Pradaxa)</td>
+                                            <td class="p-1.5 border-b">150 mg BID</td>
+                                            <td class="p-1.5 border-b">75 mg BID if CrCl 15–30 mL/min. Avoid if CrCl &lt; 15 mL/min.</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-1.5 border-b font-bold">Rivaroxaban (Xarelto)</td>
+                                            <td class="p-1.5 border-b">20 mg daily with evening meal</td>
+                                            <td class="p-1.5 border-b">15 mg daily with meal if CrCl ≤ 50 mL/min.</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-1.5 border-b font-bold">Edoxaban (Savaysa)</td>
+                                            <td class="p-1.5 border-b">60 mg daily</td>
+                                            <td class="p-1.5 border-b">30 mg daily if CrCl 15–50 mL/min. <span class="text-rose-600 font-bold">DO NOT USE if CrCl &gt; 95 mL/min (reduced efficacy vs warfarin).</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Atorvastatin High Intensity Monograph -->
+                    <div class="border border-slate-200 dark:border-slate-700 rounded-lg overflow-hidden">
+                        <button onclick="toggleElement('mono-statin')" class="w-full p-3 bg-slate-100 dark:bg-slate-700/50 text-left font-bold text-slate-800 dark:text-slate-200 flex justify-between items-center">
+                            <span><i class="fa-solid fa-heart mr-2 text-rose-500"></i> Atorvastatin – High-Intensity Statin Therapy</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <div id="mono-statin" class="p-4 bg-white dark:bg-slate-800 space-y-2 text-slate-700 dark:text-slate-300">
+                            <p><strong>Indication:</strong> Secondary prevention for ALL noncardioembolic ischemic stroke/TIA patients regardless of baseline cholesterol (Class I, LOE A).</p>
+                            <p><strong>Target LDL-C:</strong> &lt; 70 mg/dL (1.81 mmol/L) for ASCVD patients. Add Ezetimibe 10 mg daily or PCSK9 inhibitor if target not achieved on max statin.</p>
+                            <p><strong>Dose:</strong> <strong>Atorvastatin 80 mg daily</strong> (or Rosuvastatin 20–40 mg daily).</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- TAB 6: CLINICAL COMPARISONS & DECISION SUPPORT -->
+        <!-- ========================================================================= -->
+        <section id="tab-comparisons" class="tab-content hidden space-y-6">
+            <div class="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-sm border border-slate-200 dark:border-slate-700">
+                <div class="border-b border-slate-200 dark:border-slate-700 pb-4 mb-4">
+                    <h2 class="text-xl font-bold text-slate-900 dark:text-white flex items-center">
+                        <i class="fa-solid fa-code-compare text-purple-500 mr-2"></i> Clinical Evidence & Treatment Comparisons
+                    </h2>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">Direct Head-to-Head Comparison Matrices to guide emergency & neurocritical decision-making.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs">
+
+                    <!-- Alteplase vs Tenecteplase Comparison -->
+                    <div class="p-4 border border-slate-200 dark:border-slate-700 rounded-lg bg-slate-50 dark:bg-slate-900/40">
+                        <h3 class="font-bold text-slate-800 dark:text-slate-100 text-sm mb-2 text-medical-600 dark:text-medical-400">
+                            1. Alteplase vs Tenecteplase (TNK)
+                        </h3>
+                        <table class="w-full text-left border border-slate-200 dark:border-slate-700">
+                            <thead class="bg-slate-100 dark:bg-slate-700">
+                                <tr>
+                                    <th class="p-1.5 border-b">Feature</th>
+                                    <th class="p-1.5 border-b">Alteplase (rt-PA)</th>
+                                    <th class="p-1.5 border-b">Tenecteplase (TNK)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="p-1.5 border-b font-bold">Half-life</td>
+                                    <td class="p-1.5 border-b">3–5 minutes</td>
+                                    <td class="p-1.5 border-b">20–24 minutes (Longer)</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-1.5 border-b font-bold">Fibrin Specificity</td>
+                                    <td class="p-1.5 border-b">Standard</td>
+                                    <td class="p-1.5 border-b">Higher (Less systemic breakdown)</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-1.5 border-b font-bold">Administration</td>
+                                    <td class="p-1.5 border-b">10% bolus + 60 min infusion</td>
+                                    <td class="p-1.5 border-b"><strong>Single 5-sec bolus</strong></td>
+                                </tr>
+                                <tr>
+                                    <td class="p-1.5 border-b font-bold">Clinical Advantage</td>
+                                    <td class="p-1.5 border-b">FDA approved; extensive history</td>
+                                    <td class="p-1.5 border-b">Faster transfer to Cath Lab for EVT; ESO 2023 preferred</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Single Antiplatelet vs DAPT Comparison (Table 42-5) -->
+                    <div class="p-4 border border-slate-200 dark:border-slate-700 rounded-lg bg-slate-50 dark:bg-slate-900/40">
+                        <h3 class="font-bold text-slate-800 dark:text-slate-100 text-sm mb-2 text-indigo-600 dark:text-indigo-400">
+                            2. Antiplatelet Regimens for Noncardioembolic Stroke
+                        </h3>
+                        <div class="space-y-1.5">
+                            <p><strong>Aspirin Monotherapy (50–325 mg/d):</strong> Standard baseline secondary prevention (Class I, LOE A).</p>
+                            <p><strong>DAPT (Aspirin + Clopidogrel 75mg):</strong>
+                                <br>• <strong>Minor Stroke (NIHSS ≤ 3) or High-Risk TIA (ABCD2 ≥ 4):</strong> Start &lt;24h, continue for <strong>21 days</strong>, then single antiplatelet. (POINT / CHANCE trials).
+                                <br>• <strong>Severe Intracranial Stenosis (70–99%):</strong> DAPT for up to <strong>90 days</strong>, then single agent (SAMMPRIS trial).
+                            </p>
+                            <p class="text-rose-600 font-bold">• <i class="fa-solid fa-ban"></i> Triple Antiplatelet Therapy (Aspirin + Clopidogrel + Dipyridamole) is HARMFUL (TARDIS trial: high bleeding, no benefit).</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- TAB 7: SUPPORTIVE CARE & SECONDARY PREVENTION -->
+        <!-- ========================================================================= -->
+        <section id="tab-supportive" class="tab-content hidden space-y-6">
+            <div class="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-sm border border-slate-200 dark:border-slate-700">
+                <div class="border-b border-slate-200 dark:border-slate-700 pb-4 mb-4">
+                    <h2 class="text-xl font-bold text-slate-900 dark:text-white flex items-center">
+                        <i class="fa-solid fa-heart-pulse text-blue-500 mr-2"></i> Supportive Care & Secondary Prevention Protocol
+                    </h2>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">In-hospital supportive management to prevent medical complications and stroke recurrence.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+
+                    <!-- Glycemic Control -->
+                    <div class="p-4 bg-slate-50 dark:bg-slate-900/50 rounded-lg border border-slate-200 dark:border-slate-700">
+                        <h3 class="font-bold text-slate-800 dark:text-slate-100 text-xs uppercase mb-2 text-amber-600">
+                            <i class="fa-solid fa-cubes-stacked mr-1"></i> Glucose & Temp Control
+                        </h3>
+                        <ul class="space-y-1 text-slate-700 dark:text-slate-300">
+                            <li>• <strong>Hyperglycemia:</strong> Treat serum glucose &gt; 180 mg/dL with IV or subcutaneous insulin. Target 140–180 mg/dL.</li>
+                            <li>• <strong>Hypoglycemia (&lt; 60 mg/dL):</strong> STAT 10–25 g Dextrose (D50W IV) to prevent stroke mimic worsening.</li>
+                            <li>• <strong>Fever Control:</strong> Maintain normothermia ($T &lt; 38^\circ\text{C} / 100.4^\circ\text{F}$). Administer Acetaminophen.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Dysphagia & DVT Prophylaxis -->
+                    <div class="p-4 bg-slate-50 dark:bg-slate-900/50 rounded-lg border border-slate-200 dark:border-slate-700">
+                        <h3 class="font-bold text-slate-800 dark:text-slate-100 text-xs uppercase mb-2 text-emerald-600">
+                            <i class="fa-solid fa-utensils mr-1"></i> Dysphagia & DVT Prophylaxis
+                        </h3>
+                        <ul class="space-y-1 text-slate-700 dark:text-slate-300">
+                            <li>• <strong>Dysphagia Screen:</strong> NPO until formal swallowing screening completed before oral meds/food to prevent aspiration pneumonia.</li>
+                            <li>• <strong>VTE Prophylaxis:</strong> Intermittent Pneumatic Compression (IPC) devices started on admission.</li>
+                            <li>• Pharmacologic VTE Prophylaxis (LMWH Enoxaparin 40 mg SC daily) started 24h post-thrombolytic if immobile.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Secondary Risk Factor Goals -->
+                    <div class="p-4 bg-slate-50 dark:bg-slate-900/50 rounded-lg border border-slate-200 dark:border-slate-700">
+                        <h3 class="font-bold text-slate-800 dark:text-slate-100 text-xs uppercase mb-2 text-indigo-600">
+                            <i class="fa-solid fa-bullseye mr-1"></i> Long-Term Secondary Targets
+                        </h3>
+                        <ul class="space-y-1 text-slate-700 dark:text-slate-300">
+                            <li>• <strong>Blood Pressure Goal:</strong> Target <strong>&lt; 130/80 mmHg</strong> post-acute phase using Thiazides, ACEi, or ARB.</li>
+                            <li>• <strong>Lipids:</strong> High-intensity Statin (Atorvastatin 80mg) to LDL &lt; 70 mg/dL. Add Icosapent Ethyl 2g BID if Triglycerides 135–499 mg/dL on statin.</li>
+                            <li>• <strong>Lifestyle:</strong> Mediterranean diet, sodium reduction &lt;2g/day, smoking cessation, alcohol limit (≤2 drinks/d men, ≤1 women).</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-12 bg-white dark:bg-slate-800 border-t border-slate-200 dark:border-slate-700 py-6 no-print">
+        <div class="max-w-7xl mx-auto px-4 text-center text-xs text-slate-500 dark:text-slate-400 space-y-1">
+            <p><strong>STROKE CLINICAL DECISION SUPPORT SYSTEM (CDSS)</strong> – Clinical Pharmacy & Neurocritical Care Guide.</p>
+            <p>Primary Source Reference: <em>DiPiro's Pharmacotherapy: A Pathophysiologic Approach, 13th Edition (Chapter 42: Stroke)</em> & AHA/ASA Guidelines.</p>
+            <p class="text-[10px] text-slate-400">Designed for licensed emergency physicians, neurointensivists, and clinical pharmacists. Verify clinical judgments independently.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Tab Switching Logic
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.nav-tab').forEach(el => {
+                el.classList.remove('tab-active');
+                el.classList.add('text-slate-600', 'dark:text-slate-300');
+            });
+
+            document.getElementById(tabId).classList.remove('hidden');
+            const btn = document.getElementById('btn-' + tabId);
+            btn.classList.add('tab-active');
+            btn.classList.remove('text-slate-600', 'dark:text-slate-300');
+        }
+
+        // Toggle Element Visibility
+        function toggleElement(id) {
+            const el = document.getElementById(id);
+            if (el.classList.contains('hidden')) {
+                el.classList.remove('hidden');
+            } else {
+                el.classList.add('hidden');
+            }
+        }
+
+        // Dark / Light Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+        });
+
+        // 1. Alteplase Calculator Logic
+        function calcAlteplase() {
+            const weight = parseFloat(document.getElementById('alt-weight').value);
+            if (isNaN(weight) || weight <= 0) {
+                document.getElementById('alt-total').innerText = '0 mg';
+                document.getElementById('alt-bolus').innerText = '0 mg';
+                document.getElementById('alt-bolus-vol').innerText = '0 mL';
+                document.getElementById('alt-infusion').innerText = '0 mg';
+                document.getElementById('alt-infusion-rate').innerText = '0 mL/hr';
+                return;
+            }
+
+            let totalDose = weight * 0.9;
+            if (totalDose > 90) totalDose = 90; // Strictly Capped at 90mg
+
+            const bolusDose = totalDose * 0.10;
+            const infusionDose = totalDose * 0.90;
+
+            document.getElementById('alt-total').innerText = totalDose.toFixed(1) + ' mg' + (weight * 0.9 > 90 ? ' (Capped at 90 mg Max)' : '');
+            document.getElementById('alt-bolus').innerText = bolusDose.toFixed(1) + ' mg';
+            document.getElementById('alt-bolus-vol').innerText = bolusDose.toFixed(1) + ' mL';
+            document.getElementById('alt-infusion').innerText = infusionDose.toFixed(1) + ' mg';
+            document.getElementById('alt-infusion-rate').innerText = infusionDose.toFixed(1) + ' mL/hr';
+        }
+
+        // 2. Tenecteplase Calculator Logic
+        function calcTenecteplase() {
+            const weight = parseFloat(document.getElementById('tnk-weight').value);
+            if (isNaN(weight) || weight <= 0) {
+                document.getElementById('tnk-total').innerText = '0 mg';
+                document.getElementById('tnk-vol').innerText = '0 mL';
+                return;
+            }
+
+            let totalDose = weight * 0.25;
+            if (totalDose > 25) totalDose = 25; // Strictly Capped at 25mg
+
+            const vol = totalDose / 5.0; // 5 mg/mL concentration
+
+            document.getElementById('tnk-total').innerText = totalDose.toFixed(2) + ' mg' + (weight * 0.25 > 25 ? ' (Capped at 25 mg Max)' : '');
+            document.getElementById('tnk-vol').innerText = vol.toFixed(2) + ' mL';
+        }
+
+        // 3. 4PCC Calculator Logic
+        function calcPCC() {
+            const weight = parseFloat(document.getElementById('pcc-weight').value);
+            const factor = parseFloat(document.getElementById('pcc-inr').value);
+
+            if (isNaN(weight) || weight <= 0) {
+                document.getElementById('pcc-dose').innerText = '0 Factor IX Units';
+                return;
+            }
+
+            let dose = weight * factor;
+            let cap = 5000;
+            if (factor === 25) cap = 2500;
+            if (factor === 35) cap = 3500;
+            if (factor === 50) cap = 5000;
+
+            if (dose > cap) dose = cap;
+
+            document.getElementById('pcc-dose').innerText = Math.round(dose) + ' Units (Factor IX)';
+        }
+    </script>
+</body>
+</html>
