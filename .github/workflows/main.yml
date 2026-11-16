@@ -1,1 +1,59 @@
 
+name: Build STROKE EXPERT APK
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+      - name: Download repository
+        uses: actions/checkout@v4
+
+      - name: Extract Android project ZIP
+        run: |
+          ZIP_FILE="$(find . -maxdepth 2 -type f -name '*.zip' -print -quit)"
+          if [ -n "$ZIP_FILE" ]; then
+            mkdir -p android-source
+            unzip -q "$ZIP_FILE" -d android-source
+          fi
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v6
+
+      - name: Build Android APK
+        run: |
+          WRAPPER="$(find . -type f -name gradlew -not -path './.git/*' -print -quit)"
+          if [ -z "$WRAPPER" ]; then
+            echo "ERROR: Gradle Wrapper not found in the repository or ZIP."
+            exit 1
+          fi
+
+          PROJECT_DIR="$(cd "$(dirname "$WRAPPER")" && pwd)"
+          cd "$PROJECT_DIR"
+
+          chmod +x ./gradlew
+          ./gradlew --no-daemon assembleDebug
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: STROKE-EXPERT-CDSS-APK
+          path: '**/build/outputs/apk/**/*.apk'
+          if-no-files-found: error
+          
