@@ -1,0 +1,7 @@
+2.1 – 2026 guideline and safety logic update
+
+AIS content: added 2026 AHA/ASA current-practice priorities and clarified that retained older criteria are legacy reference only.
+Patient Assessment: hard-stop logic for INR >1.7, PT >15 seconds, aPTT >40 seconds, and platelets <100,000/mm3; invalid lab checks; LKW/time-window handling; no routine dose estimates when a hard stop or unresolved critical field is present; separate EVT prompt.
+ICH safety: revised anticoagulant reversal warning; Andexanet dosing table removed pending jurisdiction-specific status verification; FDA Dec 2025 safety update added.
+Global alerts: antithrombotic timing after IV thrombolysis clarified; no blanket stenting exception.
+PWA: Service Worker cache version advanced.
