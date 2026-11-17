@@ -1,3 +1,8 @@
+<a href="./clinical-case-001.html"
+   class="nav-tab text-slate-600 dark:text-slate-300 px-3 py-1.5 whitespace-nowrap rounded-md hover:bg-slate-100 dark:hover:bg-slate-700/50">
+    <i class="fa-solid fa-file-medical mr-1.5 text-emerald-500"></i>
+    Clinical Cases
+</a>
 STROKE EXPERT CDSS — Clinical Case 001
 ======================================
 
